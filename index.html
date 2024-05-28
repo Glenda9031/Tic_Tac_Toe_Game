@@ -4,18 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <script
+      src="https://kit.fontawesome.com/89300977dc.js"
+      crossorigin="anonymous"
+    ></script>
   <link rel="stylesheet" href="css/style.css">
   <title>Frontend Mentor | Tic Tac Toe</title>
 </head>
 <body>
+  <div id="main-content">
+    <section class="secondary-container">
+      <div class="game-start-menu show" id="game-start-menu">
+        <header class="logo">
+          <img src="./assets/logo.svg" alt="Tic Tac Toe logo" />
+        </header>
 
+        <div class="secondary-container pick-player-container">
+          <p class="header font-one">Pick player 1's mark</p>
+          <div class="third-container pick-players">
+            <button class="pick-player button icon-x">xx</button>
+            <button class="pick-player-button icon-circle-light-background">o</button>
+          </div>
+
+          <p class="header font-two">Remember: X goes first</p>
+          <p class="header font-two" id="playerDisplay"></p>
+        </div>
+
+        <div class="secondary-container">
+          <button class="button-yellow button-font" id="new-game-multiplayer">New Game (vs CPU)</button>
+        </div>
+
+        <div class="new-game-vs-player-alert" id="new-game-vs-player-alert">
+          <div class="new-game-vs-player-alert-container">
+            <h1 class="new-game-vs-player-alert-header">New Game (vs player)</h1>
+            <button class="back-button">Go Back</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </div>
   <!-- New game menu start -->
 
-  Pick player 1's mark
-  Remember: X goes first
-
-  New Game (vs CPU)
-  New Game (vs player)
+  
+  
 
   <!-- New game menu end -->
 
