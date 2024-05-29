@@ -1,2 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+:root {
+    --Dark-navy: #1a2a33;
+    --Semi-dark-navy: #1f3641;
+    --Silver: #a8bfc9;
+    --Silver-hover: #dbe8ed;
+    --Light-yellow: #f2b137;
+    --Light-blue: #31c3bd;
+    --Light-yellow-hover: #ffc860;
+    --Light-blue-hover: #65e9e4;
+    --On-hover-transition: 250ms ease-in-out;
+    --Cell-size: 140px;
+    --X-mark: url(./images/icon-x.svg);
+    --X-mark-hover: url(./images/icon-x-outline.svg);
+    --Circle-mark: url(./images/icon-o.svg);
+    --Circle-mark-hover: url(./images/icon-o-outline.svg);
+    --Box-shadow-large-button: 0px -8px 0px 0px #10212a inset;
+    --Box-shadow-light: 0px -8px 0px 0px #6b8997 inset;
+  }
+  
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--Dark-navy);
+    color: var(--Silver);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    width: fit-content;
+    height: 2rem;
+}
+
+header {
+    background-color: var(--Dark-navy);
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    width: 28.75rem;
+    height: 4.1875rem;
+    transition: var(--On-hover-transition);
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
