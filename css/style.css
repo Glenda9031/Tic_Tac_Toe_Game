@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 
 :root {
     --Dark-navy: #1a2a33;
@@ -35,6 +36,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-feature-settings: "clig" off, "liga" off;
 }
 
 .logo {
@@ -56,6 +58,125 @@ button {
     cursor: pointer;
 }
 
+#game-end-message.show,
+#restart-game-message.show,
+#game-tied-message.show,
+#new-game-vs-player-alert.show {
+    display: flex;
+}
+
+#game-tied-message h1 {
+    margin-top: 0;
+}
+
+#main-content,
+#game-board {
+    justify-content: center;
+    align-items: center;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.secondary-container {
+    display: flex;
+    flex-direction: column;
+    width: 28.75rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: #fff;
+    background: var(--Dark-navy);
+}
+
+.third-container {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    height: 4.5rem;
+    padding: 0 .5rem 0 .5rem;
+    justify-content: center;
+    align-items: center;
+    background: var(--Dark-navy);
+    border-radius: .625rem;
+}
+
+.pick-player-button {
+    display: flex;
+    width: fit-content;
+    height: 3.375rem;
+    border: none;
+    padding: 0;
+    background: none;
+    justify-content: center;
+    align-items: center; 
+}
+
+.pick-player-container {
+    margin: 2.5rem auto;
+    background: var(--Semi-dark-navy);
+    border-radius: .9375rem;
+    padding: .5rem auto;
+    box-shadow: 0px -8px 0px 0px #10212a inset;
+}
+
+.icon-x,
+.icon-circle {
+    width: 12.375rem;
+    height: 3.375rem;
+    border-radius: .625rem;
+    font-family: 'Mochiy Pop One', sans-serif;
+    margin: 0;
+    padding-bottom: .9375rem;
+    font-size: 2.5rem;
+    color: var(--Silver);
+    transition: var(--On-hover-transition);
+}
+
+.icon-x:hover,
+.icon-circle:hover {
+    color: var(--Silver-hover);
+}
+
+.light-background {
+    background: var(--Silver);
+    color: var(--Dark-navy);
+}
+
+.dark-background {
+    background: var(--Dark-navy);
+    color: var(--Silver);
+}
+
+.icon-x:hover:not(.light-background),
+.icon-circle:hover:not(.light-background) {
+    background: var(--Semi-dark-navy);
+}
+
+.header {
+    color: var(--Silver);
+    text-transform: uppercase;
+    margin: 1.875rem auto;
+}
+
+.font-one {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .0625rem;
+    margin: 1.5rem auto;
+}
+
+.font-two {
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .0547rem;
+    opacity: .5;
+    margin: 1.0625rem 0 1.875rem 0;
+}
 
 
 
