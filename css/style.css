@@ -178,6 +178,207 @@ button {
     margin: 1.0625rem 0 1.875rem 0;
 }
 
+.button-yellow {
+    background: var(--Light-yellow);
+    margin-bottom: 1.25rem;
+    border-radius: .9375rem;
+    box-shadow: 0px -8px 0px 0px #10212a inset;
+}
+
+.button-yellow:hover {
+    background: var(--Light-yellow-hover);
+}
+
+.button-blue {
+    background: var(--Light-blue);
+    margin-bottom: 1.25rem;
+    border-radius: .9375rem;
+    box-shadow: 0px -8px 0px 0px #10212a inset;
+}
+
+.button-blue:hover {
+    background: var(--Light-blue-hover);
+}
+
+.button-font {
+    color: var(--Dark-navy);
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: .0781rem;
+    text-transform: uppercase;
+}
+
+.game-board-grid > *,
+.score-board,
+.game-board-navbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1.25rem;
+    gap: 1.25rem;
+}
+
+.game-board-grid span {
+    display: flex;
+    width: var(--Cell-size);
+    height: var(--Cell-size);
+    border-radius: .9375rem;
+    background: var(--Semi-dark-navy);
+    box-shadow: 0px -8px 0px 0px #10212a inset;
+    cursor: pointer;
+}
+
+.navbar-item {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-logo {
+    display: flex;
+    text-align: start;
+    align-items: center;
+}
+
+.turnButton-color {
+    filter: brightness(0) saturate(100%) invert(80%) sepia(17%) saturate(264%)
+    hue-rotate(153deg) brightness(91%) contrast(92%);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.turn-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: .625rem;
+}
+
+.turn-button {
+    display: inline-flex;
+    width: 8.75rem;
+    height: 3.125rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .0625rem;
+    text-transform: uppercase;
+    line-height: 1.25rem;
+}
+
+.turn-button p {
+    margin: 0;
+}
+
+.restart {
+    display: flex;
+    justify-content: end;
+}
+
+.restart-button {
+    width: 3.25rem;
+    height: 3.25rem;
+    background: var(--Silver);
+    border-radius: .625rem;
+    box-shadow: 0px 4px 0px 0px #608997 inset;
+    transition: var(--On-hover-transition);
+}
+
+.restart-button:hover {
+    background: var(--Silver-hover);
+}
+
+.restart-button i {
+    font-size: 1.25rem;
+}
+
+.score-board {
+    margin: 0 0 1.25rem 0;
+}
+
+.score-board-item {
+    display: flex;
+    width: 8.75rem;
+    height: 4.5rem;
+    border-radius: .9375rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--Dark-navy);
+    font-size: .9375rem;
+    font-weight: 500;
+    letter-spacing: .0586rem;
+    text-transform: uppercase;
+}
+
+.score-item {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    height: 3.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-item p {
+    margin: 0;
+}
+
+.player-one-container {
+    background: var(--Light-blue);
+}
+
+.ties-score-container {
+    background: var(--Silver);
+}
+
+.player-two-container {
+    background: var(--Light-yellow);
+}
+
+.number-score {
+    font-weight: 700;
+    font-size: 1.5rem;\
+    letter-spacing: .0781rem;
+}
+
+.game-end-message,
+.restart-game-message,
+.game-tied-message,
+.new-game-vs-player-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-end-container h1,
+.restart-game-container h1,
+.new-game-vs-player-alert h1,
+.game-tied-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: .1563rem;
+    text-transform: uppercase;
+}
+
+.game-end-container h1 {
+    color: var(--Light-yellow);
+}
+
+.game-end-buttons {
+    display: flex;
+ }
+
+
 
 
 
