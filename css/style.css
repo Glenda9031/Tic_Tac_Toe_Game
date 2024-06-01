@@ -378,6 +378,167 @@ button {
     display: flex;
  }
 
+.quit-button,
+.quit-tied-button {
+    width: 4.75rem;
+    height: 3.25rem;
+    background: var(--Silver);
+    color: var(--Dark-navy);
+    margin-right: 1rem;
+    box-shadow: 0px 4px 0px 0px #6b8997 inset;
+}
+
+.cancel-restart-button,
+.back-button,
+.next-round-button,
+.next-round-tied-button,
+.confirm-restart-button,
+.game-end-container p,
+.restart-game-container p,
+.game-tied-container p,
+.quit-button,
+.quit-tied-button {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .0625rem;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: .625rem;
+}
+
+.cancel-restart-button,
+.back-button {
+    width: 8.6875rem;
+    height: 3.25rem;
+    background: var(--Silver);
+    color: var(--Dark-navy);
+    margin-right: 1rem;
+    box-shadow: 0px 4px 0px 0px #6b8997 inset;
+}
+
+.cancel-restart-button:hover,
+.back-button:hover {
+    background: var(--Silver-hover);
+} 
+
+.next-round-button,
+.next-round-tied-button,
+.confirm-restart-button {
+    width: 9.125rem;
+    height: 3.25rem;
+    background: var(--Light-yellow);
+    color: var(--Dark-navy);
+    box-shadow: 0px 4px 0px 0px #cc8b13 inset;
+}
+
+#x-aiPlayer,
+#x-humanPlayer {
+    background-image: var(--X-mark);
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+#circle-aiPlayer,
+#circle-humanPlayer {
+    background-image: var(--Circle-mark);
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.game-end-header-large img {
+    width: 4rem;
+    height: 4rem;
+}
+
+@media (max-width: 36rem) {
+    .secondary-container {
+        width: fit-content;
+    }
+
+    .pick-player-container {
+        width: 20.4375rem;
+        height: fit-content;
+        position: relative;
+    }
+
+    .pick-players {
+        width: 17.4375rem;
+        height: 4.5rem;
+    }
+
+    .pick-player-button {
+        width: 100%;
+    }
+
+    .button-yellow,
+    .button-blue {
+        width: 20.4375rem;
+        height: 3.5rem;
+    }
+
+    .game-board-grid {
+        margin-top: 1.25rem;
+    }
+
+    .game-board-navbar .navbar-item {
+        width: 6rem;
+        height: 2.5rem;
+    }
+
+    .turn-button {
+        width: 6rem;
+        height: 2.5rem;
+    }
+
+    .game-board-grid span {
+        width: 6rem;
+        height: 6rem;        
+    }
+
+    .score-board-item {
+        width: 6rem;
+        height: 4rem;
+    }
+
+    .game-end-container h1 {
+        font-size: 1.7em;
+        margin: 1.5625rem 1.5625rem;
+    }
+
+    .game-end-buttons {
+        margin-top: .625rem;
+    }
+
+    #x-aiPlayer,
+    #x-humanPlayer,
+    #circle-aiPlayer,
+    #circle-humanPlayer {
+        background-size: 2.5rem 2.5rem;
+    }
+
+    .restart-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .restart-button i {
+        font-size: 1rem;
+    }
+
+    .turnButton-color {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .game-end-header-large img {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+
 
 
 
