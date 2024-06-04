@@ -1,4 +1,4 @@
-/* Variables */
+// Variables 
 
 const selectBox = document.querySelector('.game-start-menu');
 const selectPlayerX = document.querySelector('.icon-x');
@@ -26,7 +26,56 @@ const headerLarge = document.querySelector('.game-end-header-large');
 const headerSmall = document.querySelector('.game-end-header-small');
 const turnButton = document.querySelector('.turn-button');
 
-/* Event Listeners */
+let playerXScore = 0;
+let playerCircleScore = 0;
+let tiesScore = 0;
+let playerButtonClicked = false;
+let runAi = true;
+
+// Init and Functions
+
+function centerMainContent() {
+    let centeredContent = document.querySelector('.body');
+    let windowHeight = window.innerHeight;
+    let contentHeight = centeredContent.offsetHeight;
+    
+    let marginTop = (windowHeight - contentHeight) / 2;
+
+    centeredContent.style.marginTop = marginTop + 'px';
+}
+centerMainContent();
+
+const iconX = new Image();
+iconX.src = 'assets/icon-x.png';
+iconX.alt = 'icon-x';
+
+const iconXElement = document.createElement('img');
+iconXElement.src = 'assets/icon-x.png';
+iconXElement.alt = 'icon-x';
+iconXElement.style.cssText = "";
+iconXElement.style.verticalAlign = 'middle';
+iconXElement.style.marginRight = '10px';
+
+const iconCircle = new Image();
+iconCircle.src = 'assets/icon-circle.png';
+iconCircle.alt = 'icon-circle';
+
+const iconCircleElement = document.createElement('img');
+iconCircleElement.src = iconCircle.src;
+iconCircleElement.alt = iconCircle.alt;
+iconCircleElement.style.cssText = "";
+iconCircleElement.style.verticalAlign = 'middle';
+iconCircleElement.style.marginRight = '10px';
+
+playerButtonClicked.forEach((button) => {
+    button.addEventListener('click', function() {
+        playerButtonClicked = true;
+    });
+});
+
+
+
+// Event Listeners 
 
 newGameButton.addEventListener('click', startGame);
 newGameVsPlayer.addEventListener('click', startGameVsPlayer);
@@ -38,9 +87,12 @@ backButton.addEventListener('click', handleBackButton);
 restartButton.addEventListener('click', restartGame);
 window.addEventListener('resize', centerMainContent);
 
-let playerXScore = 0;
-let playerCircleScore = 0;
-let tiesScore = 0;
-let playerButtonClicked = false;
-let runAi = true;
+window.onload = () => {
+    for (let i = 0; i < cellElements.length; i++) {
+        cellElements[i].addEventListener('click', function() {
+            clickedBox(this);
+        });
+        playerDisplay.style.display = 'none';
+    }
+}
 
