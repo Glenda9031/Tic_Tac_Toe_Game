@@ -73,6 +73,94 @@ playerButtonClicked.forEach((button) => {
     });
 });
 
+selectPlayerX.addEventListener('click', function() {
+    playerDisplay.innerHTML = "You chose X.";
+    playerDisplay.style.display = 'block';
+    selectPlayerX.classList.add("light-background");
+    selectPlayerCircle.classList.remove("light-background");
+    iconXElement.className = "turnButton-color";
+    turnButton.innerHTML = "";
+    turnButton.appendChild(iconXElement);
+    turnButton.innerHTML += " Turn";
+    turnButton.style.color = "#a8bfc9";
+    document.getElementById("player-one").innerHTML = "X (You)";
+    document.getElementById("player-two").innerHTML = "O (CPU)";
+});
+
+selectPlayerCircle.addEventListener('click', function() {
+    playerDisplay.innerHTML = "You chose O.";
+    playerDisplay.style.display = 'block';
+    selectPlayerX.classList.remove("light-background");
+    selectPlayerCircle.classList.add("light-background");
+    players.setAttribute (
+        "class",
+        "third-container pick-players players active player"
+    );
+
+    document.getElementById("player-two").innerHTML = "O (You";
+    document.getElementById("player-one").innerHTML = "X (CPU)";
+    aiPlayer(runAi);
+});
+
+function handleMouseOver() {
+    if (players.classList.contains("active")) {
+        this.style.backgroundImage = "url('./assets/icon-o-outline.svg')";
+        this.backgroundRepeat = "no-repeat";
+        this.backgroundPosition = "center";
+    } else {
+        this.style.backgroundImage = "url('./assets/icon-x-outline.svg')";
+        this.backgroundRepeat = "no-repeat";
+        this.backgroundPosition = "center";
+    }
+}
+
+function checkScreenSize() {
+    const isSmallScreen = window.innerWidth <= 600;
+
+    if (isSmallScreen) {
+        cellElements.forEach((element) => {
+            element.removeEventListener("mouseover", handleMouseOver);
+        });
+    } else {
+        cellElements.forEach((element) => {
+            element.addEventListener("mouseover", handleMouseOver);
+        });
+    }
+}
+
+checkScreenSize();
+
+window.addEventListener("resize", checkScreenSize);
+
+cellElements.forEach((element) => {
+    element.addEventListener("mouseout", handleMouseOut)
+});
+
+function handleMouseOut() {
+    this.style = "none";
+}
+
+function startGame() {
+    if (!playerButtonClicked) {
+        alert("Player must chose a mark!");
+    } else {
+        selectBox.classList.add("hide");
+        gameBoard.classList.remove("hide");
+    }
+}
+
+function startGameVsPlayer() {
+    newGameVsPlayerAlert.classList.add("show");
+}
+
+function handleBackButton() {
+    newGameVsPlayerAlert.classList.remove("show");
+}
+
+function quitGame() {
+    location.reload();
+}
+
 
 
 // Event Listeners 
