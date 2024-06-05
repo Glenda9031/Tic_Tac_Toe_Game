@@ -161,7 +161,122 @@ function quitGame() {
     location.reload();
 }
 
+function handleTurnButton() {
+    if (playerSign === "x-aiPlayer" || playerSign === "x-humanPlayer") {
+        iconCircleElement.className = 'turnButton-color';
+        turnButton.innerHTML = "";
+        turnButton.appendChild(iconCircleElement);
+        turnButton.innerHTML += " Turn";
+        turnButton.style.color = "#a8bfc9";
+    } else {
+        iconXElement.className = 'turnButton-color';
+        turnButton.innerHTML = "";
+        turnButton.appendChild(iconXElement);
+        turnButton.innerHTML += " Turn";
+        turnButton.style.color = "#a8bfc9";
+    }
+}
 
+function clickedBox(element) {
+    if (players.classList.contains("players")) {
+        playerSign = "circle-humanPlayer";
+        element.classList.add("circle");
+        players.classList.remove("active");
+        element.setAttribute("id", playerSign);
+        element.removeEventListener("mouseover", handleMouseOver);
+    } else {
+        playerSign = "x-humanPlayer";
+        element.classList.add("x");
+        element.setAttribute("id", playerSign);
+        element.removeEventListener("mouseover", handleMouseOver);
+    }
+    handleTurnButton();
+    selectWinner();
+    gameBoard.style.pointerEvents = "none";
+
+    let randomTimeDelay = Math.floor(Math.random() * 100) + 200;
+    setTimeout(() => {
+        aiPlayer(runAi);
+    }, randomTimeDelay);
+}
+
+function aiPlayer() {
+    let emptyBoxes = [];
+    if (runAi) {
+        playerSign = "circle-aiPlayer";
+        for (let i = 0; i < cellElements.length; i++) {
+            if (
+                !cellElements[i].classList.contains("x") &&
+                !cellElements[i].classList.contains("circle")
+            ) {
+                emptyBoxes.push(i);
+            }
+        }
+
+        let randomBox = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
+        if (emptyBoxes.length > 0) {
+            if (players.classList.contains("player")) {
+                playerSign = "x-aiPlayer";
+                cellElements[randomBox].classList.add("x");
+                cellElements[randomBox].setAttribute("id", playerSign);
+                players.classList.add("active");
+            } else {
+                cellElements[randomBox].classList.add("circle");
+                cellElements[randomBox].setAttribute("id", playerSign);
+                players.classList.remove("active");
+            }
+            handleTurnButton();
+            selectWinner();
+        }
+        cellElements[randomBox].style.pointerEvents = "none";
+        gameBoard.style.pointerEvents = "auto";
+    }
+}
+
+function restartGame() {
+    restartGameMessage.classList.add("show");
+    cancelRestartButton.addEventListener("click", () => {
+        restartGameMessage.classList.remove("show");
+    });
+    confirmRestartButton.addEventListener("click", () => {
+        restartGameMessage.classList.remove("show");
+        playerXScore = 0;
+        playerCircleScore = 0;
+        tiesScore = 0;
+        document.getElementById("playerXScore").innerHTML = `${playerXScore}`;
+        document.getElementById("playerCircleScore").innerHTML = `${playerCircleScore}`;
+        document.getElementById("tiesScore").innerHTML = `${tiesScore}`;
+        nextRound();
+    });
+}
+
+function nextRound() {
+    runAi = true;
+    gameEndMessage.classList.remove("show");
+    restartGameMessage.classList.remove("show");
+    gameTiedMessage.classList.remove("show");
+    cellElements.forEach((element) => {
+        element.removeAttribute("id");
+        element.classList.remove("x", "circle");
+        element.style.pointerEvents = "auto";
+        element.addEventListener("click", () => {
+            element.style.pointerEvents = "none";
+        });
+        element.addEventListener("mouseover", handleMouseOver);
+        checkScreenSize();
+    });
+    if (playerSign === "circle-aiPlayer" || playerSign === "x-aiPlayer") {
+        aiPlayer();
+    }
+    gameBoard.style.pointerEvents = "auto";
+}
+
+function updateScores(playerSign) {
+    if (playerSign === "x-humanPlayer" || playerSign === "x-aiPlayer") {
+        playerXScore++;
+        
+    }
+}
 
 // Event Listeners 
 
