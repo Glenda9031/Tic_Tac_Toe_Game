@@ -26,6 +26,16 @@ const headerLarge = document.querySelector('.game-end-header-large');
 const headerSmall = document.querySelector('.game-end-header-small');
 const turnButton = document.querySelector('.turn-button');
 
+newGameButton.addEventListener("click", startGame);
+newGameVsPlayer.addEventListener("click", startGameVsPlayer);
+quitButton.addEventListener("click", quitGame);
+quitTiedButton.addEventListener("click", quitGame);
+nextRoundButton.addEventListener("click", nextRound);
+nextRoundTiedButton.addEventListener("click", nextRound);
+backButton.addEventListener("click", handleBackButton);
+restartButton.addEventListener("click", restartGame);
+window.addEventListener("resize", centerMainContent);
+
 let playerXScore = 0;
 let playerCircleScore = 0;
 let tiesScore = 0;
@@ -274,28 +284,113 @@ function nextRound() {
 function updateScores(playerSign) {
     if (playerSign === "x-humanPlayer" || playerSign === "x-aiPlayer") {
         playerXScore++;
-        
+        iconXElement.className = "turnButton-color";
+        turnButton.innerHTML = "";
+        turnButton.appendChild(iconXElement);
+        turnButton.innerHTML += " Turn";
+        turnButton.style.color = "#a8bfc9";
+        document.getElementById("playerXScore").innerHTML = `${playerXScore}`;
+    } else {
+        playerSign === "circle-humanPlayer" || playerSign === "circle-aiPlayer";
+    } {
+        playerCircleScore++;
+        document.getElementById("playerCircleScore").innerHTML = `${playerCircleScore}`;
+    }
+    if (playerSign === "circle-aiPlayer") {
+        iconXElement.className = "turnButton-color";
+        turnButton.innerHTML = "";
+        turnButton.appendChild(iconXElement);
+        turnButton.innerHTML += " Turn";
+        turnButton.style.color = "#a8bfc9";
     }
 }
 
-// Event Listeners 
+function getIdValue(className) {
+    return document.querySelector(".box + className").id;
+}
 
-newGameButton.addEventListener('click', startGame);
-newGameVsPlayer.addEventListener('click', startGameVsPlayer);
-quitButton.addEventListener('click', quitGame);
-quitTiedButton.addEventListener('click', quitGame);
-nextRoundButton.addEventListener('click', nextRound);
-nextRoundTiedButton.addEventListener('click', nextRound);
-backButton.addEventListener('click', handleBackButton);
-restartButton.addEventListener('click', restartGame);
-window.addEventListener('resize', centerMainContent);
-
-window.onload = () => {
-    for (let i = 0; i < cellElements.length; i++) {
-        cellElements[i].addEventListener('click', function() {
-            clickedBox(this);
-        });
-        playerDisplay.style.display = 'none';
+function checkIdSign(val1, val2, val3, sign) {
+    if (
+        getIdValue(val1) == sign &&
+        getIdValue(val2) == sign &&
+        getIdValue(val3) == sign
+    ) {
+        return true;
     }
 }
+
+function selectWinner() {
+    if (
+      checkIdSign(1, 2, 3, playerSign) ||
+      checkIdSign(4, 5, 6, playerSign) ||
+      checkIdSign(7, 8, 9, playerSign) ||
+      checkIdSign(1, 4, 7, playerSign) ||
+      checkIdSign(2, 5, 8, playerSign) ||
+      checkIdSign(3, 6, 9, playerSign) ||
+      checkIdSign(1, 5, 9, playerSign) ||
+      checkIdSign(3, 5, 7, playerSign)
+    ) {
+      if (playerSign === "x-aiPlayer" || playerSign === "circle-aiPlayer") {
+        headerSmall.innerHTML = "Oh no, you lost...";
+      } else {
+        headerSmall.innerHTML = "You won!";
+      }
+      if (playerSign === "x-humanPlayer" || playerSign === "x-aiPlayer") {
+        iconXElement.classList.remove("turnButton-color");
+        iconXElement.style.verticalAlign = "middle";
+        headerLarge.innerHTML = "";
+        headerLarge.appendChild(iconXElement);
+        headerLarge.innerHTML += " takes the round";
+        headerLarge.style.color = "#31c3bd";
+      } else {
+        iconCircleElement.classList.remove("turnButton-color");
+        iconCircleElement.style.verticalAlign = "middle";
+        headerLarge.innerHTML = "";
+        headerLarge.appendChild(iconCircleElement);
+        headerLarge.innerHTML += " takes the round";
+        headerLarge.style.color = "#f2b137";
+      }
+  
+      runAi = false;
+      aiPlayer(runAi);
+  
+      setTimeout(() => {
+        gameEndMessage.classList.add("show");
+        gameEndMessage.style.pointerEvents = "auto";
+        updateScores(playerSign);
+      }, 700);
+    } else {
+      if (
+        getIdValue(1) != "" &&
+        getIdValue(2) != "" &&
+        getIdValue(3) != "" &&
+        getIdValue(4) != "" &&
+        getIdValue(5) != "" &&
+        getIdValue(6) != "" &&
+        getIdValue(7) != "" &&
+        getIdValue(8) != "" &&
+        getIdValue(9) != ""
+      ) {
+        if (playerSign === "x-humanPlayer") {
+        }
+        runAi = false;
+        aiPlayer(runAi);
+  
+        setTimeout(() => {
+          gameTiedMessage.classList.add("show");
+          gameTiedMessage.style.pointerEvents = "auto";
+          headerLarge.style.color = "#A8BFC9";
+          tiesScore++;
+          document.getElementById("tiesScore").innerHTML = `${tiesScore}`;
+          updateScores(playerSign);
+        }, 700);
+      }
+    }
+  }
+
+
+
+
+
+
 
